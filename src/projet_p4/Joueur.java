@@ -22,7 +22,6 @@ public class Joueur {
         CouleurJoueur = couleur_joueur;
         nombreDesintegrateurs = 0;
         nombreJetons_restants = 0; 
-    
     }
     
     public boolean ajouter_jeton(Jeton jeton_a_ajouter){

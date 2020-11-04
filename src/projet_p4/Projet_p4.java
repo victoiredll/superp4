@@ -15,6 +15,9 @@ public class Projet_p4 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic <<<<<
+        
+        System.out.println("Bienvenue dans Puissance 4 le jeu !");
+        Partie unePartie = new Partie();
+        unePartie.debuterPartie();
     }
     

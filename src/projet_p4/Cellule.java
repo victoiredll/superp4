@@ -19,7 +19,7 @@ public class Cellule {
         jetonCourant = jetoncourant = null; //lorsque la cellule est créee il n'y a pas de jeton
         trouNoir = trounoir = false;        //il n'y a pas de trou noir pour le moment
         Desintegrateur = desintegrateur = false; //il n'y a pas de desintegrateur non plus
-        
+        //salut victoire 
     }
     
     public boolean affecterJeton(Jeton jeton_1){

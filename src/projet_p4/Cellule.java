@@ -19,7 +19,6 @@ public class Cellule {
         jetonCourant = jetoncourant = null; //lorsque la cellule est créee il n'y a pas de jeton
         trouNoir = trounoir = false;        //il n'y a pas de trou noir pour le moment
         Desintegrateur = desintegrateur = false; //il n'y a pas de desintegrateur non plus
-        //salut victoire 
     }
     
     public boolean affecterJeton(Jeton jeton_1){
@@ -41,33 +40,52 @@ public class Cellule {
     }
     
     public boolean supprimerJeton(){
-        if (jetonCourant != null){
+        if (jetonCourant == null){
+            return false;
+        }
+        else{
             jetonCourant = null;
             return true;
         }
-        else{
-            return false;
+    }
+    
+    public String lireCouleurDuJeton(){
+        if (jetonCourant == null){
+            return "vide";
         }
+        else{
+            String couleurJetonC = jetonCourant.lireCouleur();
+            return couleurJetonC; 
+        }
+        
+    }
+    
+    //renvoie vrai quand on place un trou noir sur une cellule ou faux s'il est deja placé
+     public boolean placerTrouNoir(){
+        if (trouNoir){
+            return false;
+        }   
+        else{
+            trouNoir = true;
+            return true;
+            }
     }
     
     public boolean presenceTrouNoir(){
-        if (trouNoir==true){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return trouNoir;
     }
     
-    public boolean placerTrouNoir(){
-        if (trouNoir == false){
-            trouNoir = true;
+    public boolean activerTrouNoir(){
+        if(trouNoir){
+            jetonCourant=null;
+            trouNoir=false;
+            System.out.println("Le trou noir a aspiré votre pion...");
             return true;
-        }   
+        }
         else{
-            trouNoir = false;
             return false;
-            }
+              
+        }
     }
     
     
@@ -89,11 +107,6 @@ public class Cellule {
         return true;
         }
     }
-   
-    public String lireCouleurDuJeton(){
-        String couleurJetonC = jetonCourant.lireCouleur();
-        return couleurJetonC;
-    }
 
     public boolean recupererDesintegrateur(){
         if (presenceDesintegrateur()==true){
@@ -102,18 +115,6 @@ public class Cellule {
         }
         else {
             return false;
-        }
-    }
-
-    public boolean activerTrouNoir(){
-        if(presenceTrouNoir()==true){
-            supprimerJeton();
-            trouNoir=false;
-            return true;
-        }
-        else{
-            return false;
-              
         }
     }  
     

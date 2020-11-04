@@ -6,14 +6,16 @@
 package projet_p4;
 
 import java.util.Random;
+import java.util.Scanner;
 /**
  *
  * @author mlenorma
  */
 public class Partie {
+    
     Joueur[] ListeJoueurs = new Joueur[2];
     Jeton[] ListeJetons = new Jeton[21];
-    Joueur joueurCourant;
+    Joueur joueurActuel;
     Grille[][] grille = new Grille[6][7];
     
     public void attribuerCouleursAuxJoueurs(){
@@ -37,8 +39,17 @@ public class Partie {
         System.out.println("La couleur du joueur 1 est : " + ListeJoueurs[0].CouleurJoueur+" et la couleur du joueur 2 est : " + ListeJoueurs[1].CouleurJoueur);
     }
     
+    public Joueur ProchainJoueur(Joueur joueur_1){
+        if(ListeJoueurs[0]== joueurActuel){
+            return ListeJoueurs[1];
+        }
+        else{
+            return ListeJoueurs[0];
+        }
+    }
+    
     public void initialiserPartie(){
-        
+        //on met ici en place notre grille
         
         
     }

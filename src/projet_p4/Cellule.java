@@ -33,7 +33,7 @@ public class Cellule {
     
     
     //cette methode permet de recuperer le jeton de la cellule en question
-    public Jeton recupereJeton(){
+    public Jeton recupererJeton(){
         Jeton jeton_2 = jetonCourant; //On assigne une reference au jeton
         jetonCourant = null; //on enleve ce jeton de la cellule grace a sa reference et s'il était deja null en renvoie null
         return jeton_2; 

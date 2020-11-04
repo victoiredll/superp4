@@ -39,8 +39,7 @@ public class Grille {
         if (Cellules[i][nbcolonne]).presenceDesintegrateur()){
             Cellules[i][nbcolonne].recupererDesintegrateur();
             joueurActuel.obtenirDesintegrateur();     
-    }
-        
+    } 
      return true;   
     }
         

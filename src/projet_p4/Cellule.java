@@ -62,7 +62,7 @@ public class Cellule {
     
     //renvoie vrai quand on place un trou noir sur une cellule ou faux s'il est deja placé
      public boolean placerTrouNoir(){
-        if (trouNoir){
+        if (trouNoir==true){
             return false;
         }   
         else{
@@ -76,7 +76,7 @@ public class Cellule {
     }
     
     public boolean activerTrouNoir(){
-        if(trouNoir){
+        if(trouNoir==true){
             jetonCourant=null;
             trouNoir=false;
             System.out.println("Le trou noir a aspiré votre pion...");
@@ -87,30 +87,24 @@ public class Cellule {
               
         }
     }
-    
-    
-    public boolean presenceDesintegrateur(){
-        if (Desintegrateur==true){
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    
+       
     public boolean placerDesintegrateur(){
         if (Desintegrateur == true){
             return false;
         }
         else{
-        Desintegrateur=true;
-        return true;
+            Desintegrateur=true;
+            return true;
         }
+    }
+    
+    public boolean presenceDesintegrateur(){
+        return Desintegrateur;
     }
 
     public boolean recupererDesintegrateur(){
         if (presenceDesintegrateur()==true){
-            jetonCourant=null;
+            Desintegrateur = false;
             return true;
         }
         else {

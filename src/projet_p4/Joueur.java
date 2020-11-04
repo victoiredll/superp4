@@ -18,13 +18,13 @@ public class Joueur {
     
     public  Joueur(String unNom, String couleur_joueur) {
 
-    Nom = unNom;
-    CouleurJoueur = couleur_joueur;
+        Nom = unNom;
+        CouleurJoueur = couleur_joueur;
+        nombreDesintegrateurs = 0;
+        nombreJetons_restants = 0; 
     
     }
     
-    
-
     public boolean ajouter_jeton(Jeton jeton_a_ajouter){
         
             ListeJetons[nombreJetons_restants]=jeton_a_ajouter;
@@ -38,7 +38,10 @@ public class Joueur {
                     return false;
                     }      
     }   
-    
+    public Jeton retirer_jeton (){
+        nombreJetons_restants=nombreJetons_restants-1;
+        return ListeJetons[nombreJetons_restants];
+        }
     public void obtenirDesintegrateur(){
         nombreDesintegrateurs= nombreDesintegrateurs+1;
     }
@@ -52,4 +55,8 @@ public class Joueur {
             return true; 
         }
     }
+    public void affectation_couleur (String couleur){
+        CouleurJoueur = couleur; 
+    }
+    
 }

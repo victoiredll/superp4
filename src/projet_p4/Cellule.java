@@ -14,10 +14,11 @@ public class Cellule {
     boolean trouNoir; 
     boolean Desintegrateur; 
     
+    //on crée le constructeur de la classe cellule
     public Cellule(Jeton jetoncourant, boolean trounoir, boolean desintegrateur){
-        jetonCourant = jetoncourant = null;
-        trouNoir = trounoir = false;
-        Desintegrateur = desintegrateur = false;
+        jetonCourant = jetoncourant = null; //lorsque la cellule est créee il n'y a pas de jeton
+        trouNoir = trounoir = false;        //il n'y a pas de trou noir pour le moment
+        Desintegrateur = desintegrateur = false; //il n'y a pas de desintegrateur non plus
         
     }
     
@@ -31,8 +32,12 @@ public class Cellule {
         }
     }
     
+    
+    //cette methode permet de recuperer le jeton de la cellule en question
     public Jeton recupereJeton(){
-        return jetonCourant;
+        Jeton jeton_2 = jetonCourant; //On assigne une reference au jeton
+        jetonCourant = null; //on enleve ce jeton de la cellule grace a sa reference et s'il était deja null en renvoie null
+        return jeton_2; 
     }
     
     public boolean supprimerJeton(){

@@ -16,9 +16,10 @@ public class Partie {
     Joueur[] ListeJoueurs = new Joueur[2];
     Joueur joueurActuel;
     Grille grilleJeu = new Grille();
+    Random nbAleat = new Random();
     
     public void attribuerCouleursAuxJoueurs(){
-        Random nbAleat = new Random();
+        
         boolean couleurJeton;
         couleurJeton = nbAleat.nextBoolean();
         if (couleurJeton){
@@ -77,10 +78,47 @@ public class Partie {
         }
         
         //on place alors les 3 derniers desintegrateurs
-        int menu_jouer(){
-            
+        for(int i=0; i<3; i++){
+            int ligneDesintegrateur = nbAleat.nextInt(6);
+            int colonneDesintegrateur = nbAleat.nextInt(7);
+            if (grilleJeu.placerDesintegrateur(ligneDesintegrateur, colonneDesintegrateur))||(grilleJeu.Cellules[ligneDesintegrateur]){
+                i--;
+            }
         }
-        
+        grilleJeu.afficherGrilleSurConsole();
     }
+    
+    public int menuJoueur(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Que souhaitez-vous faire ?");
+        System.out.println("1: Jouer un jeton");
+        System.out.println("2: Recuperer un jeton");
+        System.out.println("2: Désintégrer un jeton");
+        int choixMenu = sc.nextInt();
+        
+        while (choixMenu >3 || choixMenu <1){
+            System.out.println("Erreur ! Ce choix n'existe pas, veuillez un saisir un nouveau :");
+            choixMenu = sc.nextInt();
+        }
+        return choixMenu;
+    }
+    
+    public void jouerJeton(){
+        Scanner sc = new Scanner(System.in);
+        boolean resultataction;
+        System.out.println("Saisissez une colonne");
+        int colonne = sc.nextInt()-1;
+        while (colonne < 0 || colonne >6){
+            System.out.println("Erreur ! Veuillez saisir une colonne qui existe : ");
+            colonne = sc.nextInt()-1;
+        }
+        resultataction = grilleJeu.ajouterJetonDansColonne(joueurActuel, colonne);
+        while (!resultataction){
+            System.out.println("La colonne est déjà pleine, siasissez une autre colonne : ");
+            colonne = sc.nextInt()-1;
+            resultataction = grilleJeu.ajouterJetonDansColonne(joueurActuel, colonne);
+        }
+    }
+    
     
 }

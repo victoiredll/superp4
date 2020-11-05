@@ -120,5 +120,82 @@ public class Partie {
         }
     }
     
+    public boolean recupererJeton(){
+        int colonne;
+        int ligne ;
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Saisissez les coordonnées du jeton à récupérer : ");
+        
+        //on commence par demander d'entrer la colonne
+        System.out.println("Saisissez la colonne : ");
+        colonne = sc.nextInt()-1;
+        while (colonne >6 || colonne <0){ //cas ou le numero saisi ne correspond pas aux bornes des colonnes
+            System.out.println("Erreur ! Veuillez saisir une colonne qui existe : ");
+            colonne = sc.nextInt()-1;
+        }
+        
+        //on demande ensuite d'entrer la ligne
+        System.out.println("Saisissez la ligne : ");
+        ligne = sc.nextInt()-1;
+        while (ligne>5 || ligne <0){ //cas ou le numero saisi ne correspond pas aux bornes des lignes
+            System.out.println("Erreur ! Veuillez saisir une ligne qui existe : ");
+            ligne = sc.nextInt()-1;
+        }
+        
+        if (grilleJeu.Cellules[ligne][colonne].jetonCourant != null && grilleJeu.Cellules[ligne][colonne].lireCouleurDuJeton()){
+            joueurActuel.ajouter_jeton(grilleJeu.recupererJeton(ligne, colonne));
+            grilleJeu.tasserGrille(ligne,colonne);
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+    
+    public boolean desintegrerJeton(){
+        
+        if (joueurActuel.nombreDesintegrateurs == 0){
+            return false;
+        }
+        
+        int colonne;
+        int ligne;
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Saisissez les coordonées du jeton à désintégrer : ");
+        
+        System.out.println("Saisissez la colonne : ");
+        colonne = sc.nextInt()-1;
+        while (colonne >6 || colonne <0){ //cas ou le numero saisi ne correspond pas aux bornes des colonnes
+            System.out.println("Erreur ! Veuillez saisir une colonne qui existe : ");
+            colonne = sc.nextInt()-1;
+        }
+        
+        System.out.println("Saisissez la ligne : ");
+        ligne = sc.nextInt()-1;
+        while (ligne>5 || ligne <0){ //cas ou le numero saisi ne correspond pas aux bornes des lignes
+            System.out.println("Erreur ! Veuillez saisir une ligne qui existe : ");
+            ligne = sc.nextInt()-1;
+        }
+        
+        if (grilleJeu.Cellules[ligne][colonne].jetonCourant != null && grilleJeu.Cellules[ligne][colonne].lireCouleurDuJeton()){
+            grilleJeu.supprimerJeton(ligne, colonne);
+            grilleJeu.tasserGrille(ligne, colonne);
+            joueurActuel.utiliserDesintegrateur();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    public boolean tourDeJeu(){
+        System.out.println("C'est à "+joueurActuel.Nom+" de jouer ("+joueurActuel.CouleurJoueur+")");
+        System.out.println("Il vous reste "+ joueurActuel.nombreJetons_restants+" jetons");
+        System.out.println("Il vous reste "+ joueurActuel.nombreDesintegrateurs+" desintegrateurs");
+    }
+    
     
 }

@@ -48,9 +48,10 @@ public class Partie {
         //on cree ici les joueurs 
         Scanner sc = new Scanner(System.in);
         System.out.println("Choix du pseudo du premier joueur : ");
-        Joueur Joueur1 = new Joueur(sc.nextLine());
+        //on attribue une couleur aléatoire qu'on définit après, l'opérateur joueur attend deux paramètres
+        Joueur Joueur1 = new Joueur(sc.nextLine(), "x");
         System.out.println("Choix du pseudo du deuxième joueur : ");
-        Joueur Joueur2 = new Joueur(sc.nextLine());
+        Joueur Joueur2 = new Joueur(sc.nextLine(), "y");
         ListeJoueurs[0] = Joueur1;
         ListeJoueurs[1] = Joueur2;
         
@@ -73,9 +74,9 @@ public class Partie {
             }   
             if(!grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)){
                 i--;
-            }
-            
+            }   
         }
+    
         
         //on place alors les 3 derniers desintegrateurs
         for(int i=0; i<3; i++){

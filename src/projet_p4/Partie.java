@@ -143,7 +143,7 @@ public class Partie {
             nbligne = sc.nextInt()-1;
         }
         
-        if (grilleJeu.Cellules[nbligne][nbcolonne].jetonCourant != null && (grilleJeu.Cellules[nbligne][nbcolonne].lireCouleurDuJeton()){
+        if (grilleJeu.Cellules[nbligne][nbcolonne].jetonCourant != null && (grilleJeu.Cellules[nbligne][nbcolonne].lireCouleurDuJeton())){
             joueurActuel.ajouter_jeton(grilleJeu.recupererJeton(nbligne, nbcolonne));
             grilleJeu.tasserGrille(nbligne,nbcolonne);
             return true;

@@ -49,9 +49,9 @@ public class Partie {
         Scanner sc = new Scanner(System.in);
         System.out.println("Choix du pseudo du premier joueur : ");
         //on attribue une couleur aléatoire qu'on définit après, l'opérateur joueur attend deux paramètres
-        Joueur Joueur1 = new Joueur(sc.nextLine(), "x");
+        Joueur Joueur1 = new Joueur(sc.nextLine());
         System.out.println("Choix du pseudo du deuxième joueur : ");
-        Joueur Joueur2 = new Joueur(sc.nextLine(), "y");
+        Joueur Joueur2 = new Joueur(sc.nextLine());
         ListeJoueurs[0] = Joueur1;
         ListeJoueurs[1] = Joueur2;
         
@@ -74,15 +74,14 @@ public class Partie {
             }   
             if(!grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)){
                 i--;
-            }   
+            }
+            break; //sinon la fonction fait une boucle infinie
         }
-    
-        
         //on place alors les 3 derniers desintegrateurs
         for(int i=0; i<3; i++){
             int ligneDesintegrateur = nbAleat.nextInt(6);
             int colonneDesintegrateur = nbAleat.nextInt(7);
-            if (grilleJeu.placerDesintegrateur(ligneDesintegrateur, colonneDesintegrateur))||(grilleJeu.Cellules[ligneDesintegrateur]){
+            if ((grilleJeu.placerDesintegrateur(ligneDesintegrateur, colonneDesintegrateur))||(grilleJeu.Cellules[ligneDesintegrateur])){
                 i--;
             }
         }
@@ -122,31 +121,31 @@ public class Partie {
     }
     
     public boolean recupererJeton(){
-        int colonne;
-        int ligne ;
+        int nbcolonne;
+        int nbligne ;
         Scanner sc = new Scanner(System.in);
         
         System.out.println("Saisissez les coordonnées du jeton à récupérer : ");
         
         //on commence par demander d'entrer la colonne
         System.out.println("Saisissez la colonne : ");
-        colonne = sc.nextInt()-1;
-        while (colonne >6 || colonne <0){ //cas ou le numero saisi ne correspond pas aux bornes des colonnes
+        nbcolonne = sc.nextInt()-1;
+        while (nbcolonne >6 || nbcolonne <0){ //cas ou le numero saisi ne correspond pas aux bornes des colonnes
             System.out.println("Erreur ! Veuillez saisir une colonne qui existe : ");
-            colonne = sc.nextInt()-1;
+            nbcolonne = sc.nextInt()-1;
         }
         
         //on demande ensuite d'entrer la ligne
         System.out.println("Saisissez la ligne : ");
-        ligne = sc.nextInt()-1;
-        while (ligne>5 || ligne <0){ //cas ou le numero saisi ne correspond pas aux bornes des lignes
+        nbligne = sc.nextInt()-1;
+        while (nbligne>5 || nbligne <0){ //cas ou le numero saisi ne correspond pas aux bornes des lignes
             System.out.println("Erreur ! Veuillez saisir une ligne qui existe : ");
-            ligne = sc.nextInt()-1;
+            nbligne = sc.nextInt()-1;
         }
         
-        if (grilleJeu.Cellules[ligne][colonne].jetonCourant != null && grilleJeu.Cellules[ligne][colonne].lireCouleurDuJeton()){
-            joueurActuel.ajouter_jeton(grilleJeu.recupererJeton(ligne, colonne));
-            grilleJeu.tasserGrille(ligne,colonne);
+        if (grilleJeu.Cellules[nbligne][nbcolonne].jetonCourant != null && (grilleJeu.Cellules[nbligne][nbcolonne].lireCouleurDuJeton()){
+            joueurActuel.ajouter_jeton(grilleJeu.recupererJeton(nbligne, nbcolonne));
+            grilleJeu.tasserGrille(nbligne,nbcolonne);
             return true;
         }
         else{
@@ -192,7 +191,7 @@ public class Partie {
         }
     }
     
-    public boolean tourDeJeu(){
+    public void tourDeJeu(){
         System.out.println("C'est à "+joueurActuel.Nom+" de jouer ("+joueurActuel.CouleurJoueur+")");
         System.out.println("Il vous reste "+ joueurActuel.nombreJetons_restants+" jetons");
         System.out.println("Il vous reste "+ joueurActuel.nombreDesintegrateurs+" desintegrateurs");

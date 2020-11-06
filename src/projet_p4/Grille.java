@@ -47,11 +47,11 @@ public class Grille {
 
     public boolean etreRemplie(){
         boolean x;
-        x=true; //x correspond à l'état de la grille 
+        x=true; //x correspond ï¿½ l'ï¿½tat de la grille 
         for (int i =0; i < Cellules.length; i++){
             for (int j = 0;  j< Cellules.length; j++){
                 if (Cellules [i][j] == null) {
-                 x = false; //si l'état est nul, la colonne n'est pas remplie
+                 x = false; //si l'ï¿½tat est nul, la colonne n'est pas remplie
                 }
 
                 else {
@@ -67,9 +67,9 @@ public class Grille {
 public void viderGrille() {
     for (int i =0; i < Cellules.length; i++){
      for (int j = 0;  j< Cellules.length; j++){
-        Cellules [i][j].jetonCourant = null; //enlève le jeton présent dans la case 
-        Cellules [i][j].trouNoir = false; //retire le trou noir présent dans la case
-        Cellules [i][j].Desintegrateur = false;//retire le désintégrateur présent dans la case 
+        Cellules [i][j].jetonCourant = null; //enlï¿½ve le jeton prï¿½sent dans la case 
+        Cellules [i][j].trouNoir = false; //retire le trou noir prï¿½sent dans la case
+        Cellules [i][j].Desintegrateur = false;//retire le dï¿½sintï¿½grateur prï¿½sent dans la case 
        
     }  
     }
@@ -93,7 +93,7 @@ public void  afficherGrilleSurConsole(){
         }
 }
 }
-public boolean celluleOccupee(int nbligne, int nbcolonne){ //renvoie vrai si la cellule est occupée
+public boolean celluleOccupee(int nbligne, int nbcolonne){ //renvoie vrai si la cellule est occupï¿½e
     if (Cellules[nbligne][nbcolonne].recupererJeton()==null){
         return false;
     }else{
@@ -105,28 +105,28 @@ public String lireCouleurDuJeton(int nbligne, int nbcolonne){ //indique la coule
    return Cellules[nbligne][nbcolonne].recupererJeton().lireCouleur();
 }       
  
-public boolean  etreGagnantePourJoueur(Joueur joueurActuel){ //renvoi vrai si le joueur en paramètre, soit le joueur actuel est gagnant de la partie 
+public boolean  etreGagnantePourJoueur(Joueur joueurActuel){ //renvoi vrai si le joueur en paramï¿½tre, soit le joueur actuel est gagnant de la partie 
     boolean y;
     y=false;
     for (int i=0;i<6;i++){
         for (int j=0;j<7;i++){
 
-            if ((lireCouleurDuJeton(i,j).equals(joueurActuel.CouleurJoueur)) && (lireCouleurDuJeton(i+1,j).equals(joueurActuel.Couleur)) && (lireCouleurDuJeton(i+2,j).equals(joueurActuel.Couleur)) && (lireCouleurDuJeton(i+3,j).equals(joueurActuel.Couleur))){
-//on crée les conditions d'une ligne de quatre pions de la même couleur 
+            if ((lireCouleurDuJeton(i,j).equals(joueurActuel.CouleurJoueur)) && (lireCouleurDuJeton(i+1,j).equals(joueurActuel.CouleurJoueur)) && (lireCouleurDuJeton(i+2,j).equals(joueurActuel.CouleurJoueur)) && (lireCouleurDuJeton(i+3,j).equals(joueurActuel.CouleurJoueur))){
+//on crï¿½e les conditions d'une ligne de quatre pions de la mï¿½me couleur 
     y=true;
     }
 
-if (lireCouleurDuJeton(i,j).equals(joueurActuel.Couleur) && (lireCouleurDuJeton(i,j+1).equals(joueurActuel.Couleur)) && (lireCouleurDuJeton(i,j+2).equals(joueurActuel.Couleur)) && (lireCouleurDuJeton(i,j+3).equals(joueurActuel.Couleur))){
-//on crée les conditions d'une colonne de quatres pions de la même couleur 
+if (lireCouleurDuJeton(i,j).equals(joueurActuel.CouleurJoueur) && (lireCouleurDuJeton(i,j+1).equals(joueurActuel.CouleurJoueur)) && (lireCouleurDuJeton(i,j+2).equals(joueurActuel.CouleurJoueur)) && (lireCouleurDuJeton(i,j+3).equals(joueurActuel.CouleurJoueur))){
+//on crï¿½e les conditions d'une colonne de quatres pions de la mï¿½me couleur 
     y=true;
 }
 
-if (lireCouleurDuJeton(i,j).equals(joueurActuel.Couleur) && (lireCouleurDuJeton(i+1,j+1).equals(joueurActuel.Couleur)) && (lireCouleurDuJeton(i+2,j+2).equals(joueurActuel.Couleur)) && (lireCouleurDuJeton(i+3,j+3).equals(joueurActuel.Couleur))){
-//on se place dans le cas d'une diagonale de pions de la même couleur 
+if (lireCouleurDuJeton(i,j).equals(joueurActuel.CouleurJoueur) && (lireCouleurDuJeton(i+1,j+1).equals(joueurActuel.CouleurJoueur)) && (lireCouleurDuJeton(i+2,j+2).equals(joueurActuel.CouleurJoueur)) && (lireCouleurDuJeton(i+3,j+3).equals(joueurActuel.CouleurJoueur))){
+//on se place dans le cas d'une diagonale de pions de la mï¿½me couleur 
     y=true;
 }
 
-if (lireCouleurDuJeton(i,j).equals(joueurActuel.Couleur) && (lireCouleurDuJeton(i+1,j-1).equals(joueurActuel.Couleur)) && (lireCouleurDuJeton(i+2,j-2).equals(joueurActuel.Couleur)) && (lireCouleurDuJeton(i+3,j-3).equals(joueurActuel.Couleur))){
+if (lireCouleurDuJeton(i,j).equals(joueurActuel.CouleurJoueur) && (lireCouleurDuJeton(i+1,j-1).equals(joueurActuel.CouleurJoueur)) && (lireCouleurDuJeton(i+2,j-2).equals(joueurActuel.CouleurJoueur)) && (lireCouleurDuJeton(i+3,j-3).equals(joueurActuel.CouleurJoueur))){
 //dans les deux sens 
     y=true;
 
@@ -137,10 +137,10 @@ if (lireCouleurDuJeton(i,j).equals(joueurActuel.Couleur) && (lireCouleurDuJeton(
 }
  
 public void tasserGrille (int nbligne,int nbcolonne){
-    //on ne s'intéresse qu'aux colonnes car en ligne la grille ne se tasse pas 
-//permet à la grille de se tasser si il y a un évènement tel qu'un désintgrateur ou un trou noir 
+    //on ne s'intï¿½resse qu'aux colonnes car en ligne la grille ne se tasse pas 
+//permet ï¿½ la grille de se tasser si il y a un ï¿½vï¿½nement tel qu'un dï¿½sintgrateur ou un trou noir 
     for (int i = nbligne ; i <6 ; i++) {
-        if (i == 5) { //si une case inférieure est vide, le pion se met dans celle-ci 
+        if (i == 5) { //si une case infï¿½rieure est vide, le pion se met dans celle-ci 
             Cellules[i][nbcolonne].jetonCourant =null;
             }
         else {
@@ -177,9 +177,9 @@ public boolean placerTrouNoir(int nbligne, int nbcolone){
 }
 
 public boolean placerDesintegrateur(int nbligne ,int nbcolonne) {
-//ajoute un désintégrateur et renvoie vrai si il y a bien eu un ajout, renvoie faux dans tous les autres cas
+//ajoute un dï¿½sintï¿½grateur et renvoie vrai si il y a bien eu un ajout, renvoie faux dans tous les autres cas
 
- if (Cellules[nbligne][nbcolonne].Desintegrateur()) {
+ if (Cellules[nbligne][nbcolonne].Desintegrateur) {
      Cellules[nbligne][nbcolonne].Desintegrateur = true;
      return true;
 }
@@ -189,7 +189,7 @@ public boolean placerDesintegrateur(int nbligne ,int nbcolonne) {
  }
 
 public boolean supprimerJeton(int nbligne, int nbcolone){
-//enlève un jeton et renvoie vrai si il a bien été enlevé 
+//enlï¿½ve un jeton et renvoie vrai si il a bien ï¿½tï¿½ enlevï¿½ 
     boolean y;
     y=false;
     if (Cellules[nbligne][nbcolone].jetonCourant==null){
@@ -203,10 +203,10 @@ public boolean supprimerJeton(int nbligne, int nbcolone){
 }
   
 public Jeton recupererJeton(int ligne, int colonne){
-    //permet d'enlever un jeton et permet de le récupérer par le joueur 
+    //permet d'enlever un jeton et permet de le rï¿½cupï¿½rer par le joueur 
 
     Jeton arecuperer = Cellules[ligne][colonne].recupererJeton() ;
-    Cellules[ligne][colonne].supprimerjeton(); //on supprime le jeton de la grille 
+    Cellules[ligne][colonne].supprimerJeton(); //on supprime le jeton de la grille 
     return arecuperer;
    
 } 

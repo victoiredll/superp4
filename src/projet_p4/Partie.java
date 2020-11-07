@@ -66,14 +66,14 @@ public class Partie {
             int colonneTrouNoir = nbAleat.nextInt(7);
             if(Compteur<2){
                 if (grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)==false){
-                    Compteur = Compteur--;
+                    Compteur = Compteur-1;
                 }
                 else{
                     Compteur = Compteur + 1;
                 }
             }   
             if(grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)==false){
-                i--;
+                i++;
             }
         }
         //on place alors les 3 derniers desintegrateurs
@@ -81,7 +81,7 @@ public class Partie {
             int ligneDesintegrateur = nbAleat.nextInt(6);
             int colonneDesintegrateur = nbAleat.nextInt(7);
             if ((grilleJeu.placerDesintegrateur(ligneDesintegrateur, colonneDesintegrateur)==false)||(grilleJeu.Cellules[ligneDesintegrateur])==null){
-                i--;
+                i++;
             }
         }
         grilleJeu.afficherGrilleSurConsole();
@@ -142,7 +142,7 @@ public class Partie {
             nbligne = sc.nextInt()-1;
         }
         
-        if (grilleJeu.Cellules[nbligne][nbcolonne].jetonCourant != null && (grilleJeu.Cellules[nbligne][nbcolonne].lireCouleurDuJeton())){
+        if (grilleJeu.Cellules[nbligne][nbcolonne].jetonCourant != null && (grilleJeu.Cellules[nbligne][nbcolonne].lireCouleurDuJeton()==)){
             joueurActuel.ajouter_jeton(grilleJeu.recupererJeton(nbligne, nbcolonne));
             grilleJeu.tasserGrille(nbligne,nbcolonne);
             return true;
@@ -179,7 +179,7 @@ public class Partie {
             ligne = sc.nextInt()-1;
         }
         
-        if (grilleJeu.Cellules[ligne][colonne].jetonCourant != null && grilleJeu.Cellules[ligne][colonne].lireCouleurDuJeton()==){
+        if (grilleJeu.Cellules[ligne][colonne].jetonCourant != null && grilleJeu.Cellules[ligne][colonne].lireCouleurDuJeton()==CouleurJeton.jetonCourant){
             grilleJeu.supprimerJeton(ligne, colonne);
             grilleJeu.tasserGrille(ligne, colonne);
             joueurActuel.utiliserDesintegrateur();

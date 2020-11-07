@@ -204,5 +204,8 @@ public class Partie {
         System.out.println("Il vous reste "+ joueurActuel.nombreDesintegrateurs+" desintegrateurs");
     }
     
-    
+    public void debuterPartie(){
+        initialiserPartie();
+        menuJoueur(); 
+    }   
 }

@@ -61,27 +61,26 @@ public class Partie {
         
         //on assimile ensuite des jetons aux deux joueurs
         int Compteur =0;
-        for (int i=0; 1<5; i++){
+        for (int i=0; i<6; i++){
             int ligneTrouNoir = nbAleat.nextInt(6);
             int colonneTrouNoir = nbAleat.nextInt(7);
             if(Compteur<2){
-                if (!grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)){
+                if (grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)==false){
                     Compteur = Compteur--;
                 }
                 else{
                     Compteur = Compteur + 1;
                 }
             }   
-            if(!grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)){
+            if(grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)==false){
                 i--;
             }
-            break; //sinon la fonction fait une boucle infinie
         }
         //on place alors les 3 derniers desintegrateurs
         for(int i=0; i<3; i++){
             int ligneDesintegrateur = nbAleat.nextInt(6);
             int colonneDesintegrateur = nbAleat.nextInt(7);
-            if ((grilleJeu.placerDesintegrateur(ligneDesintegrateur, colonneDesintegrateur))||(grilleJeu.Cellules[ligneDesintegrateur])){
+            if ((grilleJeu.placerDesintegrateur(ligneDesintegrateur, colonneDesintegrateur)==false)||(grilleJeu.Cellules[ligneDesintegrateur])==null){
                 i--;
             }
         }
@@ -180,7 +179,7 @@ public class Partie {
             ligne = sc.nextInt()-1;
         }
         
-        if (grilleJeu.Cellules[ligne][colonne].jetonCourant != null && grilleJeu.Cellules[ligne][colonne].lireCouleurDuJeton()){
+        if (grilleJeu.Cellules[ligne][colonne].jetonCourant != null && grilleJeu.Cellules[ligne][colonne].lireCouleurDuJeton()==){
             grilleJeu.supprimerJeton(ligne, colonne);
             grilleJeu.tasserGrille(ligne, colonne);
             joueurActuel.utiliserDesintegrateur();

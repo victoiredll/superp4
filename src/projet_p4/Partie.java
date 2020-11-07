@@ -80,7 +80,7 @@ public class Partie {
         for(int i=0; i<3; i++){
             int ligneDesintegrateur = nbAleat.nextInt(6);
             int colonneDesintegrateur = nbAleat.nextInt(7);
-            if ((grilleJeu.placerDesintegrateur(ligneDesintegrateur, colonneDesintegrateur)==false)||(grilleJeu.Cellules[ligneDesintegrateur])==null){
+            if ((grilleJeu.placerDesintegrateur(ligneDesintegrateur, colonneDesintegrateur)==true)||(grilleJeu.Cellules[ligneDesintegrateur])!=null){
                 i++;
             }
         }
@@ -141,16 +141,20 @@ public class Partie {
             System.out.println("Erreur ! Veuillez saisir une ligne qui existe : ");
             nbligne = sc.nextInt()-1;
         }
-        
-        if (grilleJeu.Cellules[nbligne][nbcolonne].jetonCourant != null && (grilleJeu.Cellules[nbligne][nbcolonne].lireCouleurDuJeton()==)){
+        boolean x;
+        x=false;
+        if (grilleJeu.Cellules[nbligne][nbcolonne].jetonCourant != null){
+            if (grilleJeu.Cellules[nbligne][nbcolonne].lireCouleurDuJeton()==joueurActuel.CouleurJoueur) {
+           
             joueurActuel.ajouter_jeton(grilleJeu.recupererJeton(nbligne, nbcolonne));
             grilleJeu.tasserGrille(nbligne,nbcolonne);
-            return true;
+            x=true;
         }
         else{
-            return false;
+            x=false;
         }
-        
+        }
+        return x;
     }
     
     public boolean desintegrerJeton(){

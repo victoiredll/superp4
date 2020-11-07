@@ -182,16 +182,20 @@ public class Partie {
             System.out.println("Erreur ! Veuillez saisir une ligne qui existe : ");
             ligne = sc.nextInt()-1;
         }
-        
-        if (grilleJeu.Cellules[ligne][colonne].jetonCourant != null && grilleJeu.Cellules[ligne][colonne].lireCouleurDuJeton()==CouleurJeton.jetonCourant){
+        boolean x; 
+        x=false;
+        if ((grilleJeu.Cellules[ligne][colonne].jetonCourant)!= null){ 
+                if (grilleJeu.Cellules[ligne][colonne].lireCouleurDuJeton()==joueurActuel.CouleurJoueur){
             grilleJeu.supprimerJeton(ligne, colonne);
             grilleJeu.tasserGrille(ligne, colonne);
             joueurActuel.utiliserDesintegrateur();
-            return true;
+            x=true;
         }
         else {
-            return false;
+            x=false;
         }
+    }
+        return x;
     }
     
     public void tourDeJeu(){

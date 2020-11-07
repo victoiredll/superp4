@@ -27,11 +27,11 @@ public class Grille {
     
     public boolean ajouterJetonDansColonne(Joueur joueurActuel, int nbcolonne){
         int i=0;
-        while (Cellules[i][nbcolonne].JetonCourant !=null){
+        while (Cellules[i][nbcolonne].jetonCourant !=null){
         i=i+1;
     }
         Jeton jetonDuJoueur = joueurActuel.retirer_jeton(); 
-        Cellules[i][nbcolonne].JetonActuel = jetonDuJoueur; 
+        Cellules[i][nbcolonne].jetonCourant = jetonDuJoueur; 
         
         if (Cellules[i][nbcolonne].presenceTrouNoir()){
             Cellules[i][nbcolonne].activerTrouNoir();
@@ -56,8 +56,6 @@ public boolean ajouterJetonDansColonne (Jeton couleur_jeton,int nbcolonne) {
 }
     return b ;
 }
-
-
 
     public boolean etreRemplie(){
         boolean x;

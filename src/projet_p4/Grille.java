@@ -12,6 +12,14 @@ package projet_p4;
 public class Grille {
     Cellule[][] Cellules = new Cellule[6][7];
     
+    public Grille (){
+        for (int i=0; i<Cellules.length; i++){
+            for (int j=0; j<Cellules.length; j++){
+                Cellules[i][j]=new Cellule();
+            }
+        }
+    }
+    
     public boolean Colonnevide(Jeton jetonActuel, int nbcolonne){
         boolean colonnevide = true;
         for (int i=0 ; i<Cellules.length; i++){ 

@@ -210,12 +210,6 @@ public class Partie {
         return x;
     }
     
-    public void tourDeJeu(){
-        System.out.println("C'est à "+joueurActuel.Nom+" de jouer ("+joueurActuel.CouleurJoueur+")");
-        System.out.println("Il vous reste "+ joueurActuel.nombreJetons_restants+" jetons");
-        System.out.println("Il vous reste "+ joueurActuel.nombreDesintegrateurs+" desintegrateurs");
-    }
-    
     public void debuterPartie(){
         initialiserPartie();
         menuJoueur(); 

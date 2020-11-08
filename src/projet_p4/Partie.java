@@ -175,9 +175,10 @@ public class Partie {
         return x;
     }
     
+    //action du desintegrateur s'il y en a un
     public boolean desintegrerJeton(){
         
-        if (joueurActuel.nombreDesintegrateurs == 0){
+        if (joueurActuel.nombreDesintegrateurs == 0){ //on ne fait rien sil ny a pas de desintegrateur
             return false;
         }
         
@@ -215,6 +216,7 @@ public class Partie {
     }
         return x;
     }
+    
     
     public void debuterPartie(){
         initialiserPartie();

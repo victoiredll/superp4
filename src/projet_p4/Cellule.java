@@ -40,21 +40,21 @@ public class Cellule {
     }
     
     public boolean supprimerJeton(){
-        if (jetonCourant == null){
+        if (jetonCourant == null){ //cas ou il n'ya deja pas de jeton couarnt
             return false;
         }
         else{
-            jetonCourant = null;
+            jetonCourant = null; // s'il y en a un, on lui assigne null ce qui le supprime
             return true;
         }
     }
     
     public String lireCouleurDuJeton(){
-        if (jetonCourant == null){
+        if (jetonCourant == null){ //cas ou il n'y a pas de jeton
             return "vide";
         }
         else{
-            String couleurJetonC = jetonCourant.lireCouleur();
+            String couleurJetonC = jetonCourant.lireCouleur(); //on fait appel la methode lirecouleur de la classe jeton et on l'assigen a une variable
             return couleurJetonC; 
         }
         
@@ -79,7 +79,7 @@ public class Cellule {
         if(trouNoir==true){
             jetonCourant=null;
             trouNoir=false;
-            System.out.println("Le trou noir a aspiré votre pion...");
+            System.out.println("Le trou noir a aspiré votre pion ");
             return true;
         }
         else{

@@ -20,18 +20,6 @@ public class Grille {
         }
     }
     
-    public boolean Colonnevide(Jeton jetonActuel, int nbcolonne){
-        boolean colonnevide = true;
-        for (int i=0 ; i<Cellules.length; i++){ 
-            if (Cellules[i][nbcolonne+1].affecterJeton(jetonActuel)){
-                colonnevide = true;
-            }
-            else {
-                colonnevide = false;
-            }
-        }
-    return colonnevide; 
-    }
     
     public boolean ajouterJetonDansColonne(Joueur joueurActuel, int nbcolonne){
         int i=0;
@@ -96,10 +84,13 @@ public void viderGrille() {
 }
 
 public void  afficherGrilleSurConsole(){
-    for(int i=0;i<Cellules.length;i++){
-        for(int j=0;j<Cellules[0].length;i++){
-            if (Cellules[i][j].presenceTrouNoir()==true) {   
+    for(int i=0;i<5;i++){
+        for(int j=0;j<7;i++){
+            if (Cellules[i][j].trouNoir==true) {   
                System.out.print("!");
+            }
+            if (Cellules[i][j].Desintegrateur== true){
+                System.out.println("D");
             }
             if ((Cellules[i][j].lireCouleurDuJeton())=="rouge") {   
                System.out.print("Rouge");
@@ -179,15 +170,14 @@ public boolean colonneRemplie(){
 return z;
 
 }
-   
-
-public boolean placerTrouNoir(int nbligne, int nbcolone){
+ 
+public boolean placerTrouNoir(int i, int j){
 //permet d'ajouter un trou noir et renvoie vrai si il y a bien eu un ajout, dans tous les autres cas il renvoie faux 
 
     boolean x;
-    x=false;
-    if(Cellules[nbligne][nbcolone].trouNoir==false){
-    Cellules[nbligne][nbcolone].trouNoir = true;
+    
+    if(Cellules[i][j].trouNoir==false){
+    Cellules[i][j].trouNoir = true;
     x=true;
     }
     else {
@@ -199,8 +189,9 @@ public boolean placerTrouNoir(int nbligne, int nbcolone){
 public boolean placerDesintegrateur(int nbligne ,int nbcolonne) {
 //ajoute un d�sint�grateur et renvoie vrai si il y a bien eu un ajout, renvoie faux dans tous les autres cas
 
- if (Cellules[nbligne][nbcolonne].Desintegrateur) {
+ if (Cellules[nbligne][nbcolonne].Desintegrateur==false) {
      Cellules[nbligne][nbcolonne].Desintegrateur = true;
+     System.out.println("Désintégrateur bien placé");
      return true;
 }
     else {

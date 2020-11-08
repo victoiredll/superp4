@@ -21,12 +21,13 @@ public class Cellule {
         Desintegrateur = desintegrateur = false; //il n'y a pas de desintegrateur non plus
     }
     
+    // methode qui ajoute le jeton en paramètre	à la cellule, et retourne vrai si l’ajout s’est	bien passé, ou faux sinon
     public boolean affecterJeton(Jeton jeton_1){
-        if (jetonCourant == null){
+        if (jetonCourant == null){ // cas ou il n'y a pas de jeton
             jetonCourant = jeton_1;
             return true;
         }
-        else{
+        else{ // cas ou il y a deja un jeton 
             return false;
         }
     }
@@ -34,13 +35,14 @@ public class Cellule {
     
     //cette methode permet de recuperer le jeton de la cellule en question
     public Jeton recupererJeton(){
-        Jeton jeton_2 = jetonCourant; //On assigne une reference au jeton
+        Jeton jeton_2 = jetonCourant; //On renvoie une reference au jeton
         jetonCourant = null; //on enleve ce jeton de la cellule grace a sa reference et s'il était deja null en renvoie null
         return jeton_2; 
     }
     
+    //	supprime le jeton et renvoie vrai si la	suppression s’est bien passée, ou faux autrement
     public boolean supprimerJeton(){
-        if (jetonCourant == null){ //cas ou il n'ya deja pas de jeton couarnt
+        if (jetonCourant == null){ //cas ou il n'ya deja pas de jeton present
             return false;
         }
         else{
@@ -49,6 +51,7 @@ public class Cellule {
         }
     }
     
+    //renvoie la couleur du jeton occupant la cellule
     public String lireCouleurDuJeton(){
         if (jetonCourant == null){ //cas ou il n'y a pas de jeton
             return "vide";

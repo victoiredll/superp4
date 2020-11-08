@@ -15,10 +15,10 @@ public class Cellule {
     boolean Desintegrateur; 
     
     //on crée le constructeur de la classe cellule
-    public Cellule(Jeton jetoncourant, boolean trounoir, boolean desintegrateur){
-        jetonCourant = jetoncourant = null; //lorsque la cellule est créee il n'y a pas de jeton
-        trouNoir = trounoir = false;        //il n'y a pas de trou noir pour le moment
-        Desintegrateur = desintegrateur = false; //il n'y a pas de desintegrateur non plus
+    public Cellule(){
+        jetonCourant = null; //lorsque la cellule est créee il n'y a pas de jeton
+        trouNoir =false;        //il n'y a pas de trou noir pour le moment
+        Desintegrateur =false; //il n'y a pas de desintegrateur non plus
     }
     
     // methode qui ajoute le jeton en paramètre	à la cellule, et retourne vrai si l’ajout s’est	bien passé, ou faux sinon

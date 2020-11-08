@@ -20,10 +20,10 @@ public class Grille {
         }
     }
     
-    
+    //ajoute le	jeton dans la colonne ciblée, sur la cellule vide la plus basse. Renvoie faux si la colonne était pleine
     public boolean ajouterJetonDansColonne(Joueur joueurActuel, int nbcolonne){
         int i=0;
-        while (Cellules[i][nbcolonne].jetonCourant !=null){
+        while (Cellules[i][nbcolonne].jetonCourant !=null){ //tant que la case du tableau cellules visee est vide
         i=i+1;
     }
         Jeton jetonDuJoueur = joueurActuel.retirer_jeton(); 

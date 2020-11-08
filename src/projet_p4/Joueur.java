@@ -38,7 +38,7 @@ public class Joueur { //on cree la classe Joueur avec ses attributs
                     return false;
                     }      
     }   
-    public Jeton retirer_jeton (){ //on retire un jeton � la liste 
+    public Jeton retirer_jeton (){ //on retire un jeton a la liste 
         nombreJetons_restants=nombreJetons_restants-1; //on diminue le nombre de jetons restants 
         return ListeJetons[nombreJetons_restants]; //ici, pas besoin de crer un objet car on enleve seulement un jeton 
         }

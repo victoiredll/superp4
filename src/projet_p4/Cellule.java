@@ -79,6 +79,8 @@ public class Cellule {
         return trouNoir;
     }
     
+    //active le	trou noir : le trou noir engloutit le jeton et disparait. 
+    //Retourne vrai si tout s’est correctement déroulé, ou faux	sinon  
     public boolean activerTrouNoir(){
         if(trouNoir==true){
             jetonCourant=null;
@@ -91,7 +93,8 @@ public class Cellule {
               
         }
     }
-       
+    
+    //ajoute un	désintégrateur à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé, ou faux sinon
     public boolean placerDesintegrateur(){
         if (Desintegrateur == true){
             return false;
@@ -102,10 +105,12 @@ public class Cellule {
         }
     }
     
+    //renvoie vrai si un desintégrateur	est présent sur	la cellule et faux si ce n'est pas le cas
     public boolean presenceDesintegrateur(){
         return Desintegrateur;
     }
-
+    
+    //supprime le désintégrateur présent de la cellule, et renvoie vrai, ou faux sinon	
     public boolean recupererDesintegrateur(){
         if (presenceDesintegrateur()==true){
             Desintegrateur = false;

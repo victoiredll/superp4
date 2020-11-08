@@ -74,6 +74,7 @@ public class Cellule {
             }
     }
     
+    //renvoie vrai si un trou noir est présent sur la cellule et faux si ce n'est pas le cas
     public boolean presenceTrouNoir(){
         return trouNoir;
     }

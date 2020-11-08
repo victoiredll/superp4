@@ -59,7 +59,7 @@ public class Partie {
         System.out.println(Joueur1.Nom + " a pour couleur "+Joueur1.CouleurJoueur);
         System.out.println(Joueur2.Nom + " a pour couleur "+Joueur2.CouleurJoueur);
         
-        //on assimile ensuite des jetons aux deux joueurs
+        //on place aléatoirement les desintegrateurs et les trous noirs 
         int Compteur =0;
         for (int i=0; i<6; i++){
             int ligneTrouNoir = nbAleat.nextInt(6);
@@ -83,6 +83,18 @@ public class Partie {
             if ((grilleJeu.placerDesintegrateur(ligneDesintegrateur, colonneDesintegrateur)==true)||(grilleJeu.Cellules[ligneDesintegrateur])!=null){
                 i++;
             }
+            
+        }
+        Random rand = new Random(); 
+        int premier_joueur; 
+        premier_joueur=rand.nextInt(1);
+        if (premier_joueur == 1){
+            System.out.println (Joueur1.Nom + " doit commencer"); 
+            joueurActuel=Joueur1; 
+        }
+        else {
+            System.out.println(Joueur2.Nom + " doit commencer"); 
+            joueurActuel = Joueur2;
         }
         grilleJeu.afficherGrilleSurConsole();
     }
@@ -207,5 +219,6 @@ public class Partie {
     public void debuterPartie(){
         initialiserPartie();
         menuJoueur(); 
+        
     }   
 }

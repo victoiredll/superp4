@@ -10,6 +10,7 @@ package projet_p4;
  * @author mlenorma
  */
 public class Cellule {
+    //on initialise les attributs
     Jeton jetonCourant; 
     boolean trouNoir; 
     boolean Desintegrateur; 
@@ -17,7 +18,7 @@ public class Cellule {
     //on crée le constructeur de la classe cellule
     public Cellule(){
         jetonCourant = null; //lorsque la cellule est créee il n'y a pas de jeton
-        trouNoir =false;        //il n'y a pas de trou noir pour le moment
+        trouNoir = false;        //il n'y a pas de trou noir pour le moment
         Desintegrateur =false; //il n'y a pas de desintegrateur non plus
     }
     

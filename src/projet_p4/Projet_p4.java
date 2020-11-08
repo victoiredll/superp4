@@ -20,4 +20,4 @@ public class Projet_p4 {
         Partie unePartie = new Partie();
         unePartie.debuterPartie();
     }
-    
+}

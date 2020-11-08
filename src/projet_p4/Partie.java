@@ -18,25 +18,26 @@ public class Partie {
     Grille grilleJeu = new Grille();
     Random nbAleat = new Random();
     
+    // cette methode permet d'assigner les deux couleurs aux joueurs
     public void attribuerCouleursAuxJoueurs(){
         
         boolean couleurJeton;
         couleurJeton = nbAleat.nextBoolean();
-        if (couleurJeton){
-            ListeJoueurs[0].CouleurJoueur = "Rouge";
-            ListeJoueurs[1].CouleurJoueur = "Jaune";
+        if (couleurJeton){ //si couleurjeton = true
+            ListeJoueurs[0].CouleurJoueur = "Rouge"; //le premier joueur est rouge
+            ListeJoueurs[1].CouleurJoueur = "Jaune"; //le deuxieme jaune
         }
-        else{
-            ListeJoueurs[0].CouleurJoueur = "Jaune";
-            ListeJoueurs[1].CouleurJoueur = "Rouge";
+        else{ //si false
+            ListeJoueurs[0].CouleurJoueur = "Jaune"; //le premier joueur a les jetons jaunes
+            ListeJoueurs[1].CouleurJoueur = "Rouge"; //le deuxieme les rouges
         }
     }   
     
     public Joueur ProchainJoueur(Joueur unJoueur){
-        if(ListeJoueurs[0]== joueurActuel){
-            return ListeJoueurs[1];
+        if(ListeJoueurs[0]== joueurActuel){ //si le joueur en train de jouer actuellement
+            return ListeJoueurs[1]; //le prochain joueur a jouer est le deuxieme joueur
         }
-        else{
+        else{ //meme demarche avec le deuxieme joueur en train de jouer actuellement 
             return ListeJoueurs[0];
         }
     }
@@ -55,28 +56,28 @@ public class Partie {
         ListeJoueurs[0] = Joueur1;
         ListeJoueurs[1] = Joueur2;
         
-        attribuerCouleursAuxJoueurs();
+        attribuerCouleursAuxJoueurs(); //on attribue et annonce quelles sont les conditions de jeu pour les joueurs (nom et couleur)
         System.out.println(Joueur1.Nom + " a pour couleur "+Joueur1.CouleurJoueur);
         System.out.println(Joueur2.Nom + " a pour couleur "+Joueur2.CouleurJoueur);
         
-        //on place aléatoirement les desintegrateurs et les trous noirs 
+        //on place aléatoirement trous noirs grace a un compteur en parcourant la grille
         int Compteur =0;
         for (int i=0; i<6; i++){
             int ligneTrouNoir = nbAleat.nextInt(6);
             int colonneTrouNoir = nbAleat.nextInt(7);
-            if(Compteur<2){
-                if (grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)==false){
-                    Compteur = Compteur-1;
+            if(Compteur<2){ //sil y a moins de deux trous noir
+                if (grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)==false){ //sil ny a pas de trou noir dans la case visee
+                    Compteur = Compteur-1; //le compteur baisse de 1
                 }
                 else{
-                    Compteur = Compteur + 1;
+                    Compteur = Compteur + 1; //sil y a un trou noir, le compteur augmente de 1
                 }
             }   
-            if(grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)==false){
+            if(grilleJeu.placerTrouNoir(ligneTrouNoir, colonneTrouNoir)==false){ //s'il n'y a pas de trou noir dans la case visee, on incremente de 1
                 i++;
             }
         }
-        //on place alors les 3 derniers desintegrateurs
+        //on place alors les 3 derniers desintegrateurs de facon aleatoire
         for(int i=0; i<3; i++){
             int ligneDesintegrateur = nbAleat.nextInt(6);
             int colonneDesintegrateur = nbAleat.nextInt(7);
@@ -85,9 +86,11 @@ public class Partie {
             }
             
         }
+        
+        //on decide de quel joueur commence de facon aleatoire
         Random rand = new Random(); 
         int premier_joueur; 
-        premier_joueur=rand.nextInt(1);
+        premier_joueur=rand.nextInt(1);//le chiffre aleatoire entre 0 et 1 correspond au joueur qui commence
         if (premier_joueur == 1){
             System.out.println (Joueur1.Nom + " doit commencer"); 
             joueurActuel=Joueur1; 
@@ -96,37 +99,40 @@ public class Partie {
             System.out.println(Joueur2.Nom + " doit commencer"); 
             joueurActuel = Joueur2;
         }
-        grilleJeu.afficherGrilleSurConsole();
+        grilleJeu.afficherGrilleSurConsole();//on affiche ensuite la grille de jeu pour commencer la partie
     }
     
+    //on initialise un menu de jeu permettant au joueur de choisir ce qu'il veut faire
     public int menuJoueur(){
+        //on presente les differentes options du menu
         Scanner sc = new Scanner(System.in);
         System.out.println("Que souhaitez-vous faire ?");
         System.out.println("1: Jouer un jeton");
         System.out.println("2: Recuperer un jeton");
         System.out.println("2: Désintégrer un jeton");
-        int choixMenu = sc.nextInt();
+        int choixMenu = sc.nextInt(); //on donne la possibilite a l'utilisateur de choisir le numero correspondant a l'option qu'il veut
         
-        while (choixMenu >3 || choixMenu <1){
-            System.out.println("Erreur ! Ce choix n'existe pas, veuillez un saisir un nouveau :");
-            choixMenu = sc.nextInt();
+        while (choixMenu >3 || choixMenu <1){ //si le choix ne correspond pas aux numeros d'option possible
+            System.out.println("Erreur ! Ce choix n'existe pas, veuillez un saisir un nouveau :"); //la console affiche un message d'erreur
+            choixMenu = sc.nextInt(); //et il doit re entrer un choix
         }
         return choixMenu;
     }
+    
     
     public void jouerJeton(){
         Scanner sc = new Scanner(System.in);
         boolean resultataction;
         System.out.println("Saisissez une colonne");
-        int colonne = sc.nextInt()-1;
-        while (colonne < 0 || colonne >6){
-            System.out.println("Erreur ! Veuillez saisir une colonne qui existe : ");
-            colonne = sc.nextInt()-1;
+        int colonne = sc.nextInt()-1; //-1 car on commence a 0 en java contrairement au language courant
+        while (colonne < 0 || colonne >6){ //si le choix du numero de colonne est impossible
+            System.out.println("Erreur ! Veuillez saisir une colonne qui existe : "); //message d'erreur
+            colonne = sc.nextInt()-1; //on re entre un chiffre
         }
         resultataction = grilleJeu.ajouterJetonDansColonne(joueurActuel, colonne);
-        while (!resultataction){
+        while (!resultataction){ //cas ou la colonne est deja pleine
             System.out.println("La colonne est déjà pleine, siasissez une autre colonne : ");
-            colonne = sc.nextInt()-1;
+            colonne = sc.nextInt()-1; //on repropose d'entrer un numero de colonne
             resultataction = grilleJeu.ajouterJetonDansColonne(joueurActuel, colonne);
         }
     }

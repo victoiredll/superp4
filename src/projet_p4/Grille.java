@@ -13,8 +13,8 @@ public class Grille {
     Cellule[][] Cellules = new Cellule[6][7];
     
     public Grille (){
-        for (int i=0; i<Cellules.length; i++){
-            for (int j=0; j<Cellules.length; j++){
+        for (int i=0; i<6; i++){
+            for (int j=0; j<7; j++){
                 Cellules[i][j]=new Cellule();
             }
         }
@@ -23,7 +23,7 @@ public class Grille {
     //ajoute le	jeton dans la colonne ciblée, sur la cellule vide la plus basse. Renvoie faux si la colonne était pleine
     public boolean ajouterJetonDansColonne(Joueur joueurActuel, int nbcolonne){
         int i=0;
-        while (Cellules[i][nbcolonne].jetonCourant !=null){ //tant que la case du tableau cellules visee est vide
+        while (Cellules[i][nbcolonne].jetonCourant ==null){ //tant que la case du tableau cellules visee est vide
         i=i+1;
     }
         Jeton jetonDuJoueur = joueurActuel.retirer_jeton(); 
@@ -84,25 +84,25 @@ public void viderGrille() {
 }
 
 public void  afficherGrilleSurConsole(){
-    for(int i=0;i<5;i++){
+    for(int i=0;i<6;i++){
         for(int j=0;j<7;i++){
-            if (Cellules[i][j].trouNoir==true) {   
+            if (Cellules[i][j].trouNoir ==true) {   
                System.out.print("!");
             }
-            if (Cellules[i][j].Desintegrateur== true){
+            else if (Cellules[i][j].Desintegrateur== true){
                 System.out.println("D");
             }
-            if ((Cellules[i][j].lireCouleurDuJeton())=="rouge") {   
+            else if ((Cellules[i][j].lireCouleurDuJeton())=="rouge") {   
                System.out.print("Rouge");
             }
-            if ((Cellules[i][j].lireCouleurDuJeton())=="jaune") {    
+            else if ((Cellules[i][j].lireCouleurDuJeton())=="jaune") {    
                System.out.print("Jaune");
             }
             else{
                 System.out.print(" ");
             }
         }
-}
+    }
 }
 public boolean celluleOccupee(int nbligne, int nbcolonne){ //renvoie vrai si la cellule est occup�e
     if (Cellules[nbligne][nbcolonne].recupererJeton()==null){
